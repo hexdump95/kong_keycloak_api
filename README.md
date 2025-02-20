@@ -1,7 +1,7 @@
 # About the project
 It's a showcase of Keycloak and Kong, and how they interact with a protected endpoint.
 
-For the purpose of this demo, I'm not showing the full Keycloak configuration. Instead I have added the realm configuration to import it from Keycloak. It contains the realm ``kong_keycloak_api``, with a client ``kong`` and a user ``zookabazooka`` with password ``password``. The realm also contains the JWKS to generate the PEM file. It's running in development mode (with H2 as database). I'm also using Kong Gateway in DB-less mode (with declarative configuration).
+For the purpose of this demo, I'm not showing the full Keycloak configuration. Instead I have added the realm configuration to import it from Keycloak. It contains the realm ``kong_keycloak_api``, with a client ``web_client`` and a user ``zookabazooka`` with password ``password``. The realm also contains the JWKS to generate the PEM file. It's running in development mode (with H2 as database). I'm also using Kong Gateway in DB-less mode (with declarative configuration).
 
 # Stack
 - Docker
@@ -38,7 +38,7 @@ curl -X POST http://localhost:8000/login \
 -d 'grant_type=password' \
 -d 'username=zookabazooka' \
 -d 'password=password' \
--d 'client_id=kong'
+-d 'client_id=web_client'
 ```
 
 We'll receive a response like:
