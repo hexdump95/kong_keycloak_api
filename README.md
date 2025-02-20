@@ -24,7 +24,7 @@ It will:
 
 Example use:
 ```bash
-curl localhost:8080/mock/anything
+curl localhost:8000/mock/anything
 ```
 Response:
 ```json
@@ -57,7 +57,7 @@ We'll receive a response like:
 
 ## Test the protected endpoint
 
-Copy the "access_token" content and use it here
+Copy the "access_token" content and use it here:
 ```bash
 curl localhost:8000/mock/anything \
 -H 'Authorization: Bearer {here}'
