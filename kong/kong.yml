@@ -12,3 +12,30 @@ services:
     paths:
     - /mock
     strip_path: true
+  plugins:
+    - name: jwt
+      protocols:
+        - http
+        - https
+      config:
+        claims_to_verify:
+          - exp
+        uri_param_names:
+          - jwt
+
+consumers:
+  - username: auth_consumer
+    jwt_secrets:
+      - algorithm: RS256
+        key: http://localhost:8080/realms/kong_keycloak_api
+        secret: randomSecret
+        rsa_public_key: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jQsiIg9PjVVzhj/ZMRa
+          qB7+zFbFMGfvE537yemH8Vw1BWK2SrFPvZggRHYaE6hYAGyLCmesOa8jKINZbw2a
+          Pq09obPyMPR5icMA0c8ikrXkh0rQXCWu+vOcrJZ8XOH90QUc0HtQuiOqOhSHebCO
+          S/f8E7oR4XyFambXvwTxaH6rc2LIzZTFmCgrswMZXV23vHfrbfv9WZf9Otf6mJMe
+          Sgx/inI7eHM73k2AFzVRwGaMlRGbI3QfB5Yciq5vTN9rqWOwpLjEllP2xQAmErXY
+          rMCfw35uxeiBMraARmFy/T0LbWJ20xr+FcEHjaD5AglamznVAS4qp2H/nSUPtcAR
+          ewIDAQAB
+          -----END PUBLIC KEY-----
