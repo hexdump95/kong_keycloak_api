@@ -22,6 +22,18 @@ services:
           - exp
         uri_param_names:
           - jwt
+- host: keycloak
+  name: login_service
+  port: 8080
+  protocol: http
+  path: /realms/kong_keycloak_api/protocol/openid-connect/token
+  routes:
+    - name: login_route
+      methods:
+        - POST
+      paths:
+      - /login
+      strip_path: true
 
 consumers:
   - username: auth_consumer
